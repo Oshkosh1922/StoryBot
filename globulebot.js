@@ -2,14 +2,14 @@ console.log("Starting bot...");
 
 const { Client, GatewayIntentBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 
-// Bot and server configuration
-const botToken = 'MTE5MDEzODIyNDUyNjUxMjIxOQ.GEDsiK.5qxhez12uSipq13AX6prsVOEEEudt0LGXn-sH4'; // Your bot token
-const channelId = '1190412271147552788'; // Your channel ID
 
-// User journey data
+const botToken = 'MTE5MDEzODIyNDUyNjUxMjIxOQ.GEDsiK.5qxhez12uSipq13AX6prsVOEEEudt0LGXn-sH4';
+const channelId = '1190412271147552788'; 
+
+
 const userJourneys = new Map();
 
-// Questions and their respective buttons
+// Questions
 const questions = [
     {
         text: '**1) Welcome to StoryBot!**\n\nLet\'s start, what way would you like to take our dog Rex?\n**HINT:** You can never go wrong with left', 
@@ -114,12 +114,12 @@ client.on('interactionCreate', async (interaction) => {
                 if (journey.currentQuestion < questions.length) {
                     sendQuestion(interaction, journey.currentQuestion);
                 } else {
-                    await assignRole(interaction, userId, true); // true for correct completion
+                    await assignRole(interaction, userId, true); //true
                     interaction.followUp({ content: '**If you would like the chance at a prize try out our lotto game at:** https://storybot.pro/lottery \n If not please head over to #gen-chat', ephemeral: true });
                     userJourneys.delete(userId);
                 }
             } else {
-                await assignRole(interaction, userId, false); // false for incorrect completion
+                await assignRole(interaction, userId, false); // false
                 interaction.followUp({ content: 'Incorrect answer! Try again.', ephemeral: true });
             }
         }
@@ -153,10 +153,10 @@ async function assignRole(interaction, userId, isCompletionCorrect) {
     let role, message;
 
     if (isCompletionCorrect) {
-        role = guild.roles.cache.get("1190401872633274601"); // Tester Role ID
+        role = guild.roles.cache.get("1190401872633274601"); 
         message = 'Congratulations! You have completed the journey and have been granted the Tester role.';
     } else {
-        role = guild.roles.cache.get("1190401957697953934"); // Incompetent Role ID
+        role = guild.roles.cache.get("1190401957697953934"); 
         message = 'You did not answer all questions correctly. You have been granted the Incompetent role.';
     }
 
