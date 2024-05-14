@@ -3,8 +3,8 @@ console.log("Starting bot...");
 const { Client, GatewayIntentBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 
 
-const botToken = 'MTE5MDEzODIyNDUyNjUxMjIxOQ.GEDsiK.5qxhez12uSipq13AX6prsVOEEEudt0LGXn-sH4';
-const channelId = '1190412271147552788'; 
+const botToken = ;
+const channelId = ; 
 
 
 const userJourneys = new Map();
